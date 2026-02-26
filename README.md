@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="https://bellmark.ai/brand-assets/svg/full-logo-dark.svg" alt="BeLLMark" width="320">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/bellmark-logomark-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset=".github/bellmark-logomark-light.png">
+    <img src=".github/bellmark-logomark-dark.png" alt="BeLLMark" width="128">
+  </picture>
 </p>
 
 <h3 align="center">The Gold Standard for Self-Hosted LLM Evaluation</h3>
