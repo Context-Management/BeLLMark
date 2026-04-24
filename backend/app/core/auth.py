@@ -41,8 +41,8 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         api_key = _get_api_key()
         path = request.url.path
 
-        # Skip auth for non-API routes, health check, and auth check
-        if not path.startswith("/api/") or path == "/health" or path == "/api/auth/check":
+        # Skip auth for non-API routes, health checks, and auth check
+        if not path.startswith("/api/") or path in ("/health", "/api/auth/check", "/api/health/live"):
             return await call_next(request)
 
         if api_key:

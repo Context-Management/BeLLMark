@@ -495,6 +495,10 @@ async def auth_check():
 async def health():
     return {"status": "ok", "version": APP_VERSION}
 
+@app.get("/api/health/live")
+async def health_live():
+    return {"status": "ok"}
+
 @app.websocket("/ws/runs/{run_id}")
 async def websocket_endpoint(websocket: WebSocket, run_id: int):
     # Verify API key via first-message auth frame (F-003 security)
