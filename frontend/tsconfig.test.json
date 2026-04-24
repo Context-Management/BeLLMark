@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "outDir": "./.test-dist",
+    "rootDir": ".",
+    "noEmit": false,
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "types": ["node", "vite/client"],
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "test/**/*.ts",
+    "src/lib/api.ts",
+    "src/lib/utils.ts",
+    "src/lib/modelPricingBadges.ts",
+    "src/lib/tokenBar.ts",
+    "src/types/api.ts",
+    "src/pages/suites/modelSelection.ts",
+    "src/pages/suites/suiteGeneration.ts",
+    "src/pages/results/computeResultsData.ts",
+    "src/pages/results/types.ts",
+    "src/pages/liveProgress/progressMatrix.ts",
+    "src/pages/questionBrowser/*.ts",
+    "src/pages/questionBrowser/*.tsx",
+    "test/questionBrowser*.test.ts"
+  ]
+}

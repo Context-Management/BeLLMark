@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+*.sqlite3
+
+# Node
+node_modules/
+dist/
+.test-dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+._*
+
+# Test
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Uploads (user-generated content)
+backend/uploads/attachments/
+
+# Tool artifacts
+.codex
+.playwright-mcp/
+.playwright-cli/
+.serena/
+.wrangler/
+.worktrees/
+.superpowers/
+
+# Screenshots (development/debug)
+screenshots/
+ui_screenshots/
+*.png
+!frontend/**/*.png
+!docs/screenshots/
+!docs/screenshots/*.png
+!docs/BeLLMark Business Package/**/*.png
+!docs/export-redesign/**/*.png
+/results/
+
+# Video production (local only — demo + hero renders, raw shots, narration, music, stock)
+production/
+
+# Consulting engagements
+consult/
+docs/consulting/
+
+# Final hero video build output
+dist-hero/

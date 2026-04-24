@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  bellmark:
+    image: bellmark:1.0.0
+    build: .
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      - BELLMARK_SECRET_KEY=${BELLMARK_SECRET_KEY:?Set BELLMARK_SECRET_KEY in .env}
+      - BELLMARK_API_KEY=${BELLMARK_API_KEY:-}
+      # Dev mode: when BELLMARK_API_KEY is unset, BELLMARK_DEV_MODE=true opens
+      # /api/* without authentication (for local dev). Without either, /api/*
+      # returns 503 (fail-closed). See backend/app/core/auth.py.
+      - BELLMARK_DEV_MODE=${BELLMARK_DEV_MODE:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY:-}
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY:-}
+      - GROK_API_KEY=${GROK_API_KEY:-}
+      - GLM_API_KEY=${GLM_API_KEY:-}
+      - KIMI_API_KEY=${KIMI_API_KEY:-}
+      # Sentinel pattern: `${VAR-default}` (single dash) substitutes default
+      # only when VAR is UNSET (not when set-but-empty). Backend maps the
+      # sentinel back to its localhost default whitelist; empty string is
+      # preserved and triggers CORS lockdown; any real value passes through.
+      # Portable across all Docker Compose versions (no env_file.required dep).
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS-__BELLMARK_DEFAULT_CORS__}
+      - BELLMARK_HOST=0.0.0.0
+      - BACKEND_PORT=8000
+      - BELLMARK_DB_PATH=/app/data/bellmark.db
+    volumes:
+      - bellmark-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  bellmark-data:
+    driver: local

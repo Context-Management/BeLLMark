@@ -1,0 +1,17 @@
+.git
+.github
+**/.venv
+**/__pycache__
+**/*.pyc
+**/node_modules
+frontend/dist
+**/*.db
+**/*.db-wal
+**/*.db-shm
+backups/
+.env
+docs/
+*.md
+!README.md
+**/._*
+**/.DS_Store
