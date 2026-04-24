@@ -1,6 +1,7 @@
 # backend/app/main.py
+from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv()  # Load .env file
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 import json
 import os

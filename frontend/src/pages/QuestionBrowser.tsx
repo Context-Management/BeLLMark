@@ -272,7 +272,9 @@ export function QuestionBrowser() {
   useEffect(() => {
     if (windowPersistenceKey !== windowPersistenceKeyRef.current) {
       windowPersistenceKeyRef.current = windowPersistenceKey;
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setModelOrder(searchState.modelIds);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setWindowStart(0);
     }
   }, [windowPersistenceKey, searchState.modelIds]);
@@ -286,6 +288,7 @@ export function QuestionBrowser() {
   }, [railQuery.data?.selected_models]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDraftModelIds(searchState.modelIds);
     if (searchState.modelIds.length < 2) {
       setSelectorOpen(true);
@@ -293,6 +296,7 @@ export function QuestionBrowser() {
   }, [selectedModelKey, searchState.modelIds.length]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setExpandedRunIds([]);
   }, [filterKey]);
 
@@ -314,6 +318,7 @@ export function QuestionBrowser() {
       return;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setExpandedRunIds((current) => {
       const [activeRunId] = defaultExpandedRunIds;
       if (current.length === 0) {

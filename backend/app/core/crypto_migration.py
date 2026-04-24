@@ -17,8 +17,9 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 # Must set env before importing app modules
+from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parents[3] / ".env")
 
 from app.db.database import SessionLocal
 from app.db.models import ModelPreset
