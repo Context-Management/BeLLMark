@@ -1,5 +1,5 @@
 {
-  "version": "2026-03-26",
+  "version": "2026-04-25",
   "provider_defaults": {
     "anthropic": {
       "input_price": 3.0,
@@ -7,8 +7,8 @@
       "cached_input_price": 0.3,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     "openai": {
       "input_price": 2.5,
@@ -16,16 +16,16 @@
       "cached_input_price": 0.25,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     "google": {
       "input_price": 2.0,
       "output_price": 12.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     "mistral": {
       "input_price": 0.4,
@@ -33,16 +33,16 @@
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://mistral.ai/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     "deepseek": {
-      "input_price": 0.28,
-      "output_price": 0.42,
+      "input_price": 0.14,
+      "output_price": 0.28,
       "cached_input_price": 0.028,
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     "grok": {
       "input_price": 3.0,
@@ -50,7 +50,7 @@
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://docs.x.ai/developers/models",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     "kimi": {
       "input_price": 0.6,
@@ -87,12 +87,21 @@
     }
   },
   "aliases": [
-    { "provider": "anthropic", "pattern": "claude-haiku-4-5-", "model_id": "claude-haiku-4-5" },
-    { "provider": "anthropic", "pattern": "claude-opus-4-5-", "model_id": "claude-opus-4-5" },
     { "provider": "anthropic", "pattern": "claude-opus-4-7-", "model_id": "claude-opus-4-7" },
+    { "provider": "anthropic", "pattern": "claude-opus-4-6-", "model_id": "claude-opus-4-6" },
+    { "provider": "anthropic", "pattern": "claude-opus-4-5-", "model_id": "claude-opus-4-5" },
+    { "provider": "anthropic", "pattern": "claude-opus-4-1-", "model_id": "claude-opus-4-1" },
+    { "provider": "anthropic", "pattern": "claude-sonnet-4-6-", "model_id": "claude-sonnet-4-6" },
     { "provider": "anthropic", "pattern": "claude-sonnet-4-5-", "model_id": "claude-sonnet-4-5" },
-    { "provider": "openai", "pattern": "gpt-4o-", "model_id": "gpt-4o" },
+    { "provider": "anthropic", "pattern": "claude-haiku-4-5-", "model_id": "claude-haiku-4-5" },
+    { "provider": "anthropic", "pattern": "claude-haiku-3-5-", "model_id": "claude-haiku-3-5" },
+    { "provider": "openai", "pattern": "gpt-5.5-pro-", "model_id": "gpt-5.5-pro" },
+    { "provider": "openai", "pattern": "gpt-5.5-", "model_id": "gpt-5.5" },
+    { "provider": "openai", "pattern": "gpt-5.4-pro-", "model_id": "gpt-5.4-pro" },
     { "provider": "openai", "pattern": "gpt-4o-mini-", "model_id": "gpt-4o-mini" },
+    { "provider": "openai", "pattern": "gpt-4o-", "model_id": "gpt-4o" },
+    { "provider": "openai", "pattern": "gpt-4.1-mini-", "model_id": "gpt-4.1-mini" },
+    { "provider": "openai", "pattern": "gpt-4.1-nano-", "model_id": "gpt-4.1-nano" },
     { "provider": "grok", "pattern": "grok-4-1-fast-", "model_id": "grok-4-1-fast" },
     { "provider": "grok", "pattern": "grok-4-fast-", "model_id": "grok-4-fast" }
   ],
@@ -105,8 +114,8 @@
       "cached_input_price": 0.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-04-16"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "anthropic",
@@ -116,8 +125,8 @@
       "cached_input_price": 0.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "anthropic",
@@ -127,8 +136,30 @@
       "cached_input_price": 0.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-4-1",
+      "input_price": 15.0,
+      "output_price": 75.0,
+      "cached_input_price": 1.5,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-opus-4",
+      "input_price": 15.0,
+      "output_price": 75.0,
+      "cached_input_price": 1.5,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "anthropic",
@@ -138,8 +169,8 @@
       "cached_input_price": 0.3,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "anthropic",
@@ -149,8 +180,19 @@
       "cached_input_price": 0.3,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-4",
+      "input_price": 3.0,
+      "output_price": 15.0,
+      "cached_input_price": 0.3,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "anthropic",
@@ -160,8 +202,19 @@
       "cached_input_price": 0.1,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "anthropic",
+      "model_id": "claude-haiku-3-5",
+      "input_price": 0.8,
+      "output_price": 4.0,
+      "cached_input_price": 0.08,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "anthropic",
@@ -171,8 +224,8 @@
       "cached_input_price": 0.3,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "anthropic",
@@ -182,118 +235,41 @@
       "cached_input_price": 1.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
     },
     {
+      "provider": "anthropic",
+      "model_id": "claude-haiku-3",
+      "input_price": 0.25,
+      "output_price": 1.25,
+      "cached_input_price": 0.03,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-04-25"
+    },
+
+    {
       "provider": "openai",
-      "model_id": "gpt-4.1",
-      "input_price": 2.0,
-      "output_price": 8.0,
+      "model_id": "gpt-5.5",
+      "input_price": 5.0,
+      "output_price": 30.0,
       "cached_input_price": 0.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://developers.openai.com/api/docs/models/gpt-4.1",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
-      "model_id": "gpt-5",
-      "input_price": 1.25,
-      "output_price": 10.0,
-      "cached_input_price": 0.125,
+      "model_id": "gpt-5.5-pro",
+      "input_price": 30.0,
+      "output_price": 180.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
-    },
-    {
-      "provider": "openai",
-      "model_id": "gpt-5-mini",
-      "input_price": 0.25,
-      "output_price": 2.0,
-      "cached_input_price": 0.025,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
-    },
-    {
-      "provider": "openai",
-      "model_id": "gpt-5-nano",
-      "input_price": 0.05,
-      "output_price": 0.4,
-      "cached_input_price": 0.005,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
-    },
-    {
-      "provider": "openai",
-      "model_id": "gpt-5.4-nano",
-      "input_price": 0.2,
-      "output_price": 1.25,
-      "cached_input_price": 0.02,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.4-nano",
-      "checked_at": "2026-04-20"
-    },
-    {
-      "provider": "openai",
-      "model_id": "gpt-5.2",
-      "input_price": 1.75,
-      "output_price": 14.0,
-      "cached_input_price": 0.175,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.2",
-      "checked_at": "2026-03-26"
-    },
-    {
-      "provider": "openai",
-      "model_id": "gpt-5.2-chat-latest",
-      "input_price": 1.75,
-      "output_price": 14.0,
-      "cached_input_price": 0.175,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest",
-      "checked_at": "2026-03-26"
-    },
-    {
-      "provider": "openai",
-      "model_id": "gpt-5.2-codex",
-      "input_price": 1.75,
-      "output_price": 14.0,
-      "cached_input_price": 0.175,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.2-codex",
-      "checked_at": "2026-03-26"
-    },
-    {
-      "provider": "openai",
-      "model_id": "gpt-5.3-chat-latest",
-      "input_price": 1.75,
-      "output_price": 14.0,
-      "cached_input_price": 0.175,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://developers.openai.com/api/docs/models/gpt-5.3-chat-latest",
-      "checked_at": "2026-04-20"
-    },
-    {
-      "provider": "openai",
-      "model_id": "gpt-5.3-codex",
-      "input_price": 1.75,
-      "output_price": 14.0,
-      "cached_input_price": 0.175,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
@@ -303,8 +279,18 @@
       "cached_input_price": 0.25,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.4-pro",
+      "input_price": 30.0,
+      "output_price": 180.0,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
@@ -314,28 +300,162 @@
       "cached_input_price": 0.075,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
-      "model_id": "gpt-4o-mini",
-      "input_price": 0.15,
-      "output_price": 0.6,
+      "model_id": "gpt-5.4-nano",
+      "input_price": 0.2,
+      "output_price": 1.25,
+      "cached_input_price": 0.02,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.3-chat-latest",
+      "input_price": 1.75,
+      "output_price": 14.0,
+      "cached_input_price": 0.175,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.3-codex",
+      "input_price": 1.75,
+      "output_price": 14.0,
+      "cached_input_price": 0.175,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.2",
+      "input_price": 1.75,
+      "output_price": 14.0,
+      "cached_input_price": 0.175,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.2-chat-latest",
+      "input_price": 1.75,
+      "output_price": 14.0,
+      "cached_input_price": 0.175,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5.2-codex",
+      "input_price": 1.75,
+      "output_price": 14.0,
+      "cached_input_price": 0.175,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5",
+      "input_price": 1.25,
+      "output_price": 10.0,
+      "cached_input_price": 0.125,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5-mini",
+      "input_price": 0.25,
+      "output_price": 2.0,
+      "cached_input_price": 0.025,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-5-nano",
+      "input_price": 0.05,
+      "output_price": 0.4,
+      "cached_input_price": 0.005,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-4.1",
+      "input_price": 2.0,
+      "output_price": 8.0,
+      "cached_input_price": 0.5,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-4.1-mini",
+      "input_price": 0.4,
+      "output_price": 1.6,
+      "cached_input_price": 0.1,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-4.1-nano",
+      "input_price": 0.1,
+      "output_price": 0.4,
+      "cached_input_price": 0.025,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
       "model_id": "gpt-4o",
       "input_price": 2.5,
       "output_price": 10.0,
+      "cached_input_price": 1.25,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "gpt-4o-mini",
+      "input_price": 0.15,
+      "output_price": 0.6,
+      "cached_input_price": 0.075,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
@@ -344,38 +464,52 @@
       "output_price": 30.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
       "model_id": "o4-mini",
       "input_price": 1.1,
       "output_price": 4.4,
+      "cached_input_price": 0.275,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
-    },
-    {
-      "provider": "openai",
-      "model_id": "o3-mini",
-      "input_price": 1.1,
-      "output_price": 4.4,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
       "model_id": "o3",
       "input_price": 2.0,
       "output_price": 8.0,
+      "cached_input_price": 0.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "o3-mini",
+      "input_price": 1.1,
+      "output_price": 4.4,
+      "cached_input_price": 0.55,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "openai",
+      "model_id": "o1",
+      "input_price": 15.0,
+      "output_price": 60.0,
+      "cached_input_price": 7.5,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "openai",
@@ -384,28 +518,20 @@
       "output_price": 12.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
-    {
-      "provider": "openai",
-      "model_id": "o1",
-      "input_price": 15.0,
-      "output_price": 60.0,
-      "currency": "USD",
-      "pricing_mode": "flat",
-      "source_url": "https://openai.com/api/pricing/",
-      "checked_at": "2026-03-26"
-    },
+
     {
       "provider": "google",
-      "model_id": "gemini-3-pro-preview",
+      "model_id": "gemini-3.1-pro-preview",
       "input_price": 2.0,
       "output_price": 12.0,
+      "cached_input_price": 0.2,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
@@ -414,68 +540,73 @@
       "output_price": 12.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
-      "model_id": "gemini-3.1-pro-preview",
+      "model_id": "gemini-3-pro-preview",
       "input_price": 2.0,
       "output_price": 12.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
       "model_id": "gemini-3-flash-preview",
       "input_price": 0.5,
       "output_price": 3.0,
+      "cached_input_price": 0.05,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
       "model_id": "gemini-3-flash",
       "input_price": 0.5,
       "output_price": 3.0,
+      "cached_input_price": 0.05,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
       "model_id": "gemini-3.1-flash-lite-preview",
-      "input_price": 0.1,
-      "output_price": 0.4,
+      "input_price": 0.25,
+      "output_price": 1.5,
+      "cached_input_price": 0.025,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
       "model_id": "gemini-2.5-pro",
       "input_price": 1.25,
       "output_price": 10.0,
+      "cached_input_price": 0.125,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
       "model_id": "gemini-2.5-flash",
       "input_price": 0.3,
       "output_price": 2.5,
+      "cached_input_price": 0.03,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
@@ -484,8 +615,8 @@
       "output_price": 5.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "google",
@@ -494,9 +625,10 @@
       "output_price": 0.3,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://ai.google.dev/pricing",
-      "checked_at": "2026-03-26"
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-04-25"
     },
+
     {
       "provider": "mistral",
       "model_id": "magistral-medium",
@@ -504,8 +636,8 @@
       "output_price": 5.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.mistral.ai/models/magistral-medium-1-2-25-09",
-      "checked_at": "2026-03-26"
+      "source_url": "https://mistral.ai/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
@@ -514,8 +646,8 @@
       "output_price": 5.0,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.mistral.ai/models/magistral-medium-1-2-25-09",
-      "checked_at": "2026-03-26"
+      "source_url": "https://mistral.ai/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
@@ -524,8 +656,8 @@
       "output_price": 1.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.mistral.ai/models/magistral-small-1-2-25-09",
-      "checked_at": "2026-03-26"
+      "source_url": "https://mistral.ai/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
@@ -534,8 +666,8 @@
       "output_price": 1.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.mistral.ai/models/magistral-small-1-2-25-09",
-      "checked_at": "2026-03-26"
+      "source_url": "https://mistral.ai/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
@@ -544,48 +676,52 @@
       "output_price": 1.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.mistral.ai/models/magistral-small-1-2-25-09",
-      "checked_at": "2026-03-26"
+      "source_url": "https://mistral.ai/pricing",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
       "model_id": "mistral-large",
       "input_price": 0.5,
       "output_price": 1.5,
+      "cached_input_price": 0.05,
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://mistral.ai/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
       "model_id": "mistral-large-latest",
       "input_price": 0.5,
       "output_price": 1.5,
+      "cached_input_price": 0.05,
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://mistral.ai/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
       "model_id": "mistral-medium-3",
       "input_price": 0.4,
       "output_price": 2.0,
+      "cached_input_price": 0.04,
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://mistral.ai/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
       "model_id": "mistral-medium-latest",
       "input_price": 0.4,
       "output_price": 2.0,
+      "cached_input_price": 0.04,
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://mistral.ai/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "mistral",
@@ -595,30 +731,76 @@
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://mistral.ai/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
+    {
+      "provider": "mistral",
+      "model_id": "mistral-small-latest",
+      "input_price": 0.15,
+      "output_price": 0.6,
+      "cached_input_price": 0.015,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://mistral.ai/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "mistral",
+      "model_id": "codestral-2508",
+      "input_price": 0.3,
+      "output_price": 0.9,
+      "cached_input_price": 0.03,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://mistral.ai/pricing",
+      "checked_at": "2026-04-25"
+    },
+
     {
       "provider": "deepseek",
       "model_id": "deepseek-chat",
-      "input_price": 0.28,
-      "output_price": 0.42,
+      "input_price": 0.14,
+      "output_price": 0.28,
       "cached_input_price": 0.028,
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "deepseek",
       "model_id": "deepseek-reasoner",
-      "input_price": 0.28,
-      "output_price": 0.42,
+      "input_price": 0.14,
+      "output_price": 0.28,
       "cached_input_price": 0.028,
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
+    {
+      "provider": "deepseek",
+      "model_id": "deepseek-v4-flash",
+      "input_price": 0.14,
+      "output_price": 0.28,
+      "cached_input_price": 0.028,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "deepseek",
+      "model_id": "deepseek-v4-pro",
+      "input_price": 1.74,
+      "output_price": 3.48,
+      "cached_input_price": 0.145,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "checked_at": "2026-04-25"
+    },
+
     {
       "provider": "grok",
       "model_id": "grok-4",
@@ -628,7 +810,7 @@
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://docs.x.ai/developers/models",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "grok",
@@ -638,8 +820,8 @@
       "cached_input_price": 0.05,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.x.ai/developers/models/grok-4-1-fast-reasoning",
-      "checked_at": "2026-03-26"
+      "source_url": "https://docs.x.ai/developers/models",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "grok",
@@ -650,7 +832,7 @@
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://docs.x.ai/developers/models",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "grok",
@@ -660,19 +842,43 @@
       "cached_input_price": 0.5,
       "currency": "USD",
       "pricing_mode": "flat",
-      "source_url": "https://docs.x.ai/docs/models",
-      "checked_at": "2026-04-20"
+      "source_url": "https://docs.x.ai/developers/models",
+      "checked_at": "2026-04-25"
+    },
+    {
+      "provider": "grok",
+      "model_id": "grok-code-fast-1",
+      "input_price": 0.2,
+      "output_price": 1.5,
+      "cached_input_price": 0.02,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://docs.x.ai/developers/models",
+      "checked_at": "2026-04-25"
     },
     {
       "provider": "grok",
       "model_id": "grok-3",
       "input_price": 3.0,
       "output_price": 15.0,
+      "cached_input_price": 0.75,
       "currency": "USD",
       "pricing_mode": "flat",
       "source_url": "https://docs.x.ai/developers/models",
-      "checked_at": "2026-03-26"
+      "checked_at": "2026-04-25"
     },
+    {
+      "provider": "grok",
+      "model_id": "grok-3-mini",
+      "input_price": 0.25,
+      "output_price": 0.5,
+      "cached_input_price": 0.075,
+      "currency": "USD",
+      "pricing_mode": "flat",
+      "source_url": "https://docs.x.ai/developers/models",
+      "checked_at": "2026-04-25"
+    },
+
     {
       "provider": "kimi",
       "model_id": "kimi-k2.5",
@@ -684,6 +890,7 @@
       "source_url": "https://platform.moonshot.ai/docs/pricing/chat",
       "checked_at": "2026-03-26"
     },
+
     {
       "provider": "glm",
       "model_id": "glm-4.7",

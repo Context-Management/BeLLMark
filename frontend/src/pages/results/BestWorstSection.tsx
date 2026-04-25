@@ -193,37 +193,46 @@ export function BestWorstSection({ mode, generations, benchmark, navigate }: Bes
 
               {/* Judge comments */}
               {q && (() => {
-                const commentsData = q.judgments
-                  .filter(j => j.status === 'success' && j.comments?.[gen.modelPresetId])
+                const judgeData = q.judgments
+                  .filter(j => j.status === 'success')
                   .map(j => ({
                     judgeName: j.judge_name,
-                    comments: j.comments![gen.modelPresetId],
-                  }));
-                if (commentsData.length === 0) return null;
+                    comments: j.comments?.[gen.modelPresetId] ?? [],
+                    rationale: j.score_rationales?.[gen.modelPresetId] ?? '',
+                  }))
+                  .filter(d => d.comments.length > 0 || d.rationale);
+                if (judgeData.length === 0) return null;
                 return (
                   <div className="px-3 py-2 border-t border-stone-200 dark:border-gray-700">
                     <div className="text-xs text-purple-600 dark:text-purple-400 font-medium mb-2">Judge Comments:</div>
                     <div className="space-y-2">
-                      {commentsData.map(({ judgeName, comments }) => (
+                      {judgeData.map(({ judgeName, comments, rationale }) => (
                         <div key={judgeName}>
                           <div className="text-slate-400 dark:text-gray-500 text-[10px] uppercase tracking-wide mb-1">{judgeName}</div>
-                          <div className="space-y-1">
-                            {(comments || []).map((c, i) => (
-                              <div
-                                key={i}
-                                className={`flex items-start gap-1.5 px-2 py-1 rounded text-xs ${
-                                  c.sentiment === 'positive'
-                                    ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-700/30'
-                                    : 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-300 border border-red-700/30'
-                                }`}
-                              >
-                                <span className="font-bold shrink-0 mt-px">
-                                  {c.sentiment === 'positive' ? '+' : '\u2212'}
-                                </span>
-                                <span>{c.text}</span>
-                              </div>
-                            ))}
-                          </div>
+                          {comments.length > 0 && (
+                            <div className="space-y-1">
+                              {comments.map((c, i) => (
+                                <div
+                                  key={i}
+                                  className={`flex items-start gap-1.5 px-2 py-1 rounded text-xs ${
+                                    c.sentiment === 'positive'
+                                      ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-700/30'
+                                      : 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-300 border border-red-700/30'
+                                  }`}
+                                >
+                                  <span className="font-bold shrink-0 mt-px">
+                                    {c.sentiment === 'positive' ? '+' : '\u2212'}
+                                  </span>
+                                  <span>{c.text}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {rationale && (
+                            <pre className="mt-1 text-xs text-slate-500 dark:text-gray-400 whitespace-pre-wrap max-h-32 overflow-y-auto bg-stone-100 dark:bg-gray-900 p-2 rounded">
+                              {rationale}
+                            </pre>
+                          )}
                         </div>
                       ))}
                     </div>

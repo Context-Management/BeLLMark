@@ -274,7 +274,7 @@ class TestModels:
         assert data["price_source"] == "catalog"
         assert "price_source_url" in data
         assert data["price_currency"] == "USD"
-        assert data["price_checked_at"] == "2026-03-26T00:00:00"
+        assert data["price_checked_at"] == "2026-04-25T00:00:00"
 
     def test_get_model_allows_legacy_custom_temperature_values(self, client):
         db_gen = app.dependency_overrides[get_db]()
@@ -327,9 +327,9 @@ class TestModels:
         assert data["price_input"] == 2.0
         assert data["price_output"] == 8.0
         assert data["price_source"] == "catalog"
-        assert data["price_source_url"] == "https://developers.openai.com/api/docs/models/gpt-4.1"
+        assert data["price_source_url"] == "https://developers.openai.com/api/docs/pricing"
         assert data["price_currency"] == "USD"
-        assert data["price_checked_at"] == "2026-03-26T00:00:00"
+        assert data["price_checked_at"] == "2026-04-25T00:00:00"
 
         verify_gen = app.dependency_overrides[get_db]()
         verify_db = next(verify_gen)
@@ -338,9 +338,9 @@ class TestModels:
             assert persisted.price_input == 2.0
             assert persisted.price_output == 8.0
             assert persisted.price_source == "catalog"
-            assert persisted.price_source_url == "https://developers.openai.com/api/docs/models/gpt-4.1"
+            assert persisted.price_source_url == "https://developers.openai.com/api/docs/pricing"
             assert persisted.price_currency == "USD"
-            assert persisted.price_checked_at == datetime(2026, 3, 26)
+            assert persisted.price_checked_at == datetime(2026, 4, 25)
         finally:
             try:
                 next(verify_gen)
@@ -376,7 +376,7 @@ class TestModels:
         assert legacy["price_input"] == 3.0
         assert legacy["price_output"] == 15.0
         assert legacy["price_source"] == "catalog"
-        assert legacy["price_source_url"] == "https://docs.anthropic.com/en/docs/about-claude/pricing"
+        assert legacy["price_source_url"] == "https://platform.claude.com/docs/en/about-claude/pricing"
         assert legacy["price_currency"] == "USD"
 
         verify_gen = app.dependency_overrides[get_db]()
@@ -386,7 +386,7 @@ class TestModels:
             assert persisted.price_input == 3.0
             assert persisted.price_output == 15.0
             assert persisted.price_source == "catalog"
-            assert persisted.price_source_url == "https://docs.anthropic.com/en/docs/about-claude/pricing"
+            assert persisted.price_source_url == "https://platform.claude.com/docs/en/about-claude/pricing"
             assert persisted.price_currency == "USD"
         finally:
             try:
@@ -454,8 +454,8 @@ class TestModels:
         assert data["price_input"] == 1.75
         assert data["price_output"] == 14.0
         assert data["price_source"] == "catalog"
-        assert data["price_source_url"] == "https://developers.openai.com/api/docs/models/gpt-5.3-chat-latest"
-        assert data["price_checked_at"] == "2026-04-20T00:00:00"
+        assert data["price_source_url"] == "https://developers.openai.com/api/docs/pricing"
+        assert data["price_checked_at"] == "2026-04-25T00:00:00"
 
     def test_get_model_backfills_openrouter_price_provenance_for_legacy_rows(self, client):
         db_gen = app.dependency_overrides[get_db]()

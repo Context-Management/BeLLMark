@@ -5,10 +5,9 @@ BeLLMark runs as a single Docker container with SQLite storage. No Redis, no Pos
 ## Quick Start (Docker)
 
 ```bash
-# 1. Create a directory and config
-mkdir bellmark && cd bellmark
-curl -O https://raw.githubusercontent.com/Context-Management/BeLLMark/main/docker-compose.yml
-curl -O https://raw.githubusercontent.com/Context-Management/BeLLMark/main/.env.example
+# 1. Clone and configure
+git clone https://github.com/Context-Management/BeLLMark.git
+cd BeLLMark
 cp .env.example .env
 
 # 2. Generate a secret key
@@ -17,20 +16,20 @@ echo "BELLMARK_SECRET_KEY=$(python3 -c 'import secrets; print(secrets.token_urls
 # 3. Add at least one LLM provider key to .env
 # Edit .env and set OPENAI_API_KEY, ANTHROPIC_API_KEY, etc.
 
-# 4. Start
-docker compose up -d
+# 4. Build and start
+docker compose up --build -d
 
 # 5. Open http://localhost:8000
 ```
 
-That's it. BeLLMark is running.
+That's it. BeLLMark is running. Build takes 2-5 minutes on first run (Python deps + Node.js frontend).
 
 ## Environment Variables
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `BELLMARK_SECRET_KEY` | **Yes** | — | Encryption key for stored API keys. Generate with `python3 -c 'import secrets; print(secrets.token_urlsafe(32))'` |
-| `BELLMARK_API_KEY` | No | — | When set, all `/api/*` endpoints require this key in the `Authorization` header |
+| `BELLMARK_API_KEY` | No | — | When set, all `/api/*` endpoints require this key in the `X-API-Key` header |
 | `BELLMARK_DEV_MODE` | No | — | Set to `true` to skip API key auth (local dev only) |
 | `BACKEND_PORT` | No | `8000` | Port the app listens on |
 | `ALLOWED_ORIGINS` | No | localhost | CORS origins. Leave unset for localhost defaults, set to your domain for remote access |
@@ -52,7 +51,7 @@ BeLLMark has two auth modes, controlled by `BELLMARK_API_KEY` and `BELLMARK_DEV_
 
 | BELLMARK_API_KEY | BELLMARK_DEV_MODE | Behavior |
 |------------------|-------------------|----------|
-| Set | — | All API calls require `Authorization: Bearer <key>` header |
+| Set | — | All API calls require `X-API-Key: <key>` header |
 | Unset | `true` | No auth required (local dev) |
 | Unset | Unset | **Fail-closed** — API returns 503 |
 
@@ -98,18 +97,11 @@ docker compose start
 ## Upgrading
 
 ```bash
-docker compose pull        # Pull the latest image
-docker compose up -d       # Restart with new version
-```
-
-Database migrations run automatically on startup. Your data is preserved.
-
-If you built from source instead of using the published image:
-
-```bash
 git pull
 docker compose up --build -d
 ```
+
+Database migrations run automatically on startup. Your data is preserved.
 
 ## Reverse Proxy (HTTPS)
 
@@ -162,20 +154,6 @@ ALLOWED_ORIGINS=https://bellmark.example.com
 ### TrueNAS SCALE
 - Deploy as a custom app with the Docker Compose file
 - Map the data volume to a dataset
-
-## Building from Source
-
-If you prefer not to use the published image:
-
-```bash
-git clone https://github.com/Context-Management/BeLLMark.git
-cd BeLLMark
-cp .env.example .env
-# Edit .env — set BELLMARK_SECRET_KEY and provider keys
-docker compose up --build -d
-```
-
-Build takes 2-5 minutes depending on your hardware (Python deps + Node.js frontend build).
 
 ## Healthcheck
 

@@ -32,6 +32,7 @@ from app.ws.progress import manager
 
 MAX_RETRIES = 3
 RETRY_DELAYS = [2, 5, 10]  # seconds
+SWEEP_DELAYS = [30, 60, 120]  # seconds between retry sweeps for still-failed judgments
 # Per-attempt API-call ceiling. The timer starts ONLY when the semaphore is
 # acquired and the actual API call fires — queue wait time does NOT count
 # against this budget. With MAX_RETRIES=3, worst-case API time per judgment
@@ -1379,78 +1380,75 @@ class BenchmarkRunner:
                 )
 
     async def _retry_failed_judgments(self, run: BenchmarkRun, judge_presets: Dict[int, ModelPreset]):
-        """Retry any failed or stuck judgments one more time.
+        """Retry failed/stuck judgments in multiple sweeps with increasing delays.
 
-        Each retry has a hard timeout. After this method returns, the run
-        WILL complete regardless of how many judgments still failed.
-
-        Retries are fired in parallel via asyncio.gather and naturally
-        throttled by the per-provider semaphore inside the *_with_retry
-        functions. With sequential retries (the previous behavior), 11 stuck
-        Opus judgments would take 11 × ~80s = ~15 min even though anthropic=3
-        slots are available. Parallel + semaphore-throttled brings it down
-        to ~4 batches × ~80s = ~5 min.
+        Sweep 0 runs immediately. Subsequent sweeps wait SWEEP_DELAYS[i] seconds
+        before retrying, giving rate limits and transient errors time to clear.
+        Stops early if all judgments succeed or the run is cancelled.
         """
-        if self.cancelled:
-            return
-
-        # Catch both failed AND stuck (running/pending) judgments
-        failed = self.db.query(Judgment).join(Question).filter(
-            Question.benchmark_id == self.run_id,
-            Judgment.status.in_([TaskStatus.failed, TaskStatus.running, TaskStatus.pending])
-        ).all()
-
-        if not failed:
-            return
-
-        logger.info(f"Retrying {len(failed)} failed/stuck judgment(s) before completing run")
-
-        # Build the list of retry coroutines BEFORE awaiting, since the
-        # judgment SQLAlchemy objects are bound to self.db and we need to
-        # capture all the data we need up-front (the *_with_retry helpers
-        # open their own per-task sessions).
-        async def retry_one(judgment: Judgment):
+        for sweep_idx in range(len(SWEEP_DELAYS) + 1):
             if self.cancelled:
                 return
-            question = judgment.question
-            preset = judge_presets.get(judgment.judge_preset_id)
-            if not preset:
+
+            self.db.expire_all()
+            failed = self.db.query(Judgment).join(Question).filter(
+                Question.benchmark_id == self.run_id,
+                Judgment.status.in_([TaskStatus.failed, TaskStatus.running, TaskStatus.pending])
+            ).all()
+
+            if not failed:
                 return
 
-            expected_answer = getattr(question, 'expected_answer', None)
+            if sweep_idx > 0:
+                delay = SWEEP_DELAYS[sweep_idx - 1]
+                logger.info(
+                    f"Retry sweep {sweep_idx}/{len(SWEEP_DELAYS)}: "
+                    f"{len(failed)} failed judgment(s), waiting {delay}s before retrying"
+                )
+                await manager.send_status(self.run_id, "judging", 95)
+                await asyncio.sleep(delay)
+            else:
+                logger.info(f"Retrying {len(failed)} failed/stuck judgment(s) (immediate sweep)")
 
-            try:
-                # No outer wait_for — per-attempt timeouts inside
-                # _judge_*_with_retry bound actual API time. Retry checkpoint
-                # should NOT re-kill queued judgments that would have
-                # succeeded with more patience.
-                if run.judge_mode == JudgeMode.comparison:
-                    generations = self.db.query(Generation).filter(
-                        Generation.question_id == question.id,
-                        Generation.status == TaskStatus.success
-                    ).all()
-                    gen_dict = {g.model_preset_id: g.content for g in generations}
-                    await self._judge_comparison_with_retry(
-                        judgment.id, preset, question.id, question.system_prompt,
-                        question.user_prompt, gen_dict, run.criteria, self._label(preset),
-                        expected_answer=expected_answer
-                    )
-                else:
-                    gen = judgment.generation
-                    if gen:
-                        await self._judge_separate_with_retry(
+            async def retry_one(judgment: Judgment):
+                if self.cancelled:
+                    return
+                question = judgment.question
+                preset = judge_presets.get(judgment.judge_preset_id)
+                if not preset:
+                    return
+
+                expected_answer = getattr(question, 'expected_answer', None)
+
+                try:
+                    if run.judge_mode == JudgeMode.comparison:
+                        generations = self.db.query(Generation).filter(
+                            Generation.question_id == question.id,
+                            Generation.status == TaskStatus.success
+                        ).all()
+                        gen_dict = {g.model_preset_id: g.content for g in generations}
+                        await self._judge_comparison_with_retry(
                             judgment.id, preset, question.id, question.system_prompt,
-                            question.user_prompt, gen.content, gen.model_preset_id,
-                            run.criteria, self._label(preset), expected_answer=expected_answer
+                            question.user_prompt, gen_dict, run.criteria, self._label(preset),
+                            expected_answer=expected_answer
                         )
-            except Exception as e:
-                logger.error(f"Retry of judgment {judgment.id} crashed: {e}")
-                self._mark_judgment_failed(judgment.id, f"Retry error: {e}")
+                    else:
+                        gen = judgment.generation
+                        if gen:
+                            await self._judge_separate_with_retry(
+                                judgment.id, preset, question.id, question.system_prompt,
+                                question.user_prompt, gen.content, gen.model_preset_id,
+                                run.criteria, self._label(preset), expected_answer=expected_answer
+                            )
+                except Exception as e:
+                    logger.error(f"Retry sweep {sweep_idx} judgment {judgment.id} crashed: {e}")
+                    self._mark_judgment_failed(judgment.id, f"Retry sweep {sweep_idx} error: {e}")
 
-        await asyncio.gather(
-            *[retry_one(judgment) for judgment in failed],
-            return_exceptions=True,
-        )
+            await asyncio.gather(
+                *[retry_one(judgment) for judgment in failed],
+                return_exceptions=True,
+            )
+
     async def _run_summarization_phase(self, questions: list,
                                         judge_presets: Dict[int, ModelPreset],
                                         model_presets: Dict[int, ModelPreset]):

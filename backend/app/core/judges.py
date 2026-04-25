@@ -663,7 +663,12 @@ async def judge_comparison(
 
     except Exception as e:
         raw = result.get("content", "")[:500]
-        logger.error(f"Parse error: {e} | Raw content (first 500 chars): {raw}")
+        full = (result.get("full_content") or "")[:500]
+        logger.error(
+            f"Parse error (comparison): {e} | thinking_only={result.get('thinking_only', False)} "
+            f"| content[:{len(result.get('content', ''))}]: {raw} "
+            f"| full_content[:{len(result.get('full_content') or '')}]: {full}"
+        )
         return {"success": False, "error": f"Parse error: {str(e)}"}
 
 

@@ -1,7 +1,9 @@
+from datetime import date, timedelta
+
 import pytest
 
 from app.core.pricing import get_model_prices
-from app.core.pricing_catalog import MissingPricingError, resolve_catalog_price
+from app.core.pricing_catalog import CATALOG_PATH, MissingPricingError, resolve_catalog_price
 
 
 def test_resolve_catalog_price_requires_exact_current_entries():
@@ -10,8 +12,8 @@ def test_resolve_catalog_price_requires_exact_current_entries():
     assert gpt41.output_price == 8.0
 
     gemini_lite = resolve_catalog_price("google", "gemini-3.1-flash-lite-preview")
-    assert gemini_lite.input_price == 0.10
-    assert gemini_lite.output_price == 0.40
+    assert gemini_lite.input_price == 0.25
+    assert gemini_lite.output_price == 1.5
 
 
 def test_resolve_catalog_price_rejects_unknown_hosted_models_when_exact_required():
@@ -47,3 +49,17 @@ def test_resolve_catalog_price_uses_current_glm_entries():
 def test_resolve_catalog_price_rejects_unknown_glm_models_when_exact_required():
     with pytest.raises(MissingPricingError):
         resolve_catalog_price("glm", "glm-made-up-2026", require_exact=True)
+
+
+def test_pricing_catalog_not_stale():
+    """Fail if the catalog version date is older than 60 days."""
+    import json
+
+    with CATALOG_PATH.open() as f:
+        catalog = json.load(f)
+    version_date = date.fromisoformat(catalog["version"])
+    age = (date.today() - version_date).days
+    assert age <= 60, (
+        f"pricing_catalog.json version is {age} days old ({catalog['version']}). "
+        f"Research current provider prices and update."
+    )

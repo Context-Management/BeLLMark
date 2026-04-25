@@ -1025,9 +1025,11 @@ async def generate(
 
                     generation_config["thinkingConfig"] = thinking_config
 
-                # Request JSON output when json_mode is enabled
-                # Gemini 2.5+ and 3.x support responseMimeType alongside thinkingConfig
-                if json_mode:
+                # Request JSON output when json_mode is enabled.
+                # Skip responseMimeType when thinking is active — it conflicts
+                # with thinking mode and causes empty/garbled answer parts.
+                # Our extract_json parser handles free-form text fine.
+                if json_mode and "thinkingConfig" not in generation_config:
                     generation_config["responseMimeType"] = "application/json"
 
                 request_body: dict = {

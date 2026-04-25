@@ -239,9 +239,9 @@ export function JudgeDisagreementSection({
                           ))}
                         </div>
                       )}
-                      {judgmentA?.reasoning && (
+                      {judgmentA?.score_rationales?.[entry.modelPresetId] && (
                         <pre className="text-xs text-slate-500 dark:text-gray-400 whitespace-pre-wrap max-h-40 overflow-y-auto bg-stone-100 dark:bg-gray-900 p-2 rounded">
-                          {judgmentA.reasoning}
+                          {judgmentA.score_rationales[entry.modelPresetId]}
                         </pre>
                       )}
                     </div>
@@ -297,9 +297,9 @@ export function JudgeDisagreementSection({
                           ))}
                         </div>
                       )}
-                      {judgmentB?.reasoning && (
+                      {judgmentB?.score_rationales?.[entry.modelPresetId] && (
                         <pre className="text-xs text-slate-500 dark:text-gray-400 whitespace-pre-wrap max-h-40 overflow-y-auto bg-stone-100 dark:bg-gray-900 p-2 rounded">
-                          {judgmentB.reasoning}
+                          {judgmentB.score_rationales[entry.modelPresetId]}
                         </pre>
                       )}
                     </div>

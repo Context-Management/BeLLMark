@@ -471,7 +471,7 @@ async def test_discover_openai_compatible_enriches_catalog_prices():
     assert base_variant["price_input"] == 2.0
     assert base_variant["price_output"] == 8.0
     assert base_variant["price_source"] == "catalog"
-    assert base_variant["price_source_url"] == "https://developers.openai.com/api/docs/models/gpt-4.1"
+    assert base_variant["price_source_url"] == "https://developers.openai.com/api/docs/pricing"
 
 
 @pytest.mark.asyncio

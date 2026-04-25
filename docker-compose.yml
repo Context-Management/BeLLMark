@@ -1,6 +1,5 @@
 services:
   bellmark:
-    image: ghcr.io/context-management/bellmark:1.0.2
     build: .
     ports:
       - "${BACKEND_PORT:-8000}:8000"

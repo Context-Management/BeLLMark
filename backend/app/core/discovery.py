@@ -151,8 +151,8 @@ def detect_reasoning_capability(model_id: str, provider: str) -> Dict[str, Any]:
         return {"is_reasoning": False, "reasoning_levels": [], "reasoning_level": None}
 
     elif provider == "deepseek":
-        # DeepSeek Reasoner: toggle only, no granular levels
-        if 'reasoner' in mid:
+        # V4 models and Reasoner support thinking toggle, no granular levels
+        if 'v4' in mid or 'reasoner' in mid:
             return {"is_reasoning": True, "reasoning_levels": [], "reasoning_level": None}
         return {"is_reasoning": False, "reasoning_levels": [], "reasoning_level": None}
 
@@ -394,9 +394,11 @@ def _canonical_architecture(arch: Optional[str]) -> Optional[str]:
 
 _REASONING_ARCHITECTURES = frozenset({
     'gpt-oss',          # OpenAI GPT-OSS family (GGUF + MLX may differ in separator)
+    'qwen35',           # Qwen3.5/3.6 dense (GGUF arch tag)
     'qwen35moe',        # Qwen3.5 122B A10B family
     'qwen3-5',          # Qwen3.5 dense hybrids (27B, distilled variants)
     'qwen3-5-moe',      # Qwen3.5 MoE hybrids (35B A3B)
+    'qwen3_5',          # Qwen3.5/3.6 dense (MLX arch tag)
     'minimax-m2',       # MiniMax M2.x family
     'glm4-moe-lite',    # GLM 4.7 Flash
     'nemotron-h',       # Nemotron 3 Nano
